@@ -1,6 +1,6 @@
-# Create Protoface App (Vapi)
+# Protoface Quickstart for Open AI realtime
 
-This starter is an example of how to create a composable Protoface interaction that runs in a Next.js app.
+This quickstart is an example of how to create a Protoface Avatar that runs in a Next.js app with the Protoface Node plugin and Vapi. 
 
 ## About Protoface
 
@@ -14,9 +14,7 @@ To see quickstarts for other platforms, visit the [quickstart repo](https://gith
 
 ## Usage
 
-1. Rename `.env.example` to `.env` and paste your keys: [Protoface API key](https://docs.protoface.com), [Vapi API key](https://dashboard.vapi.ai/org/api-keys), and your LiveKit project credentials.
-
-If you want to try Protoface but do not have API access to these third parties, reach out to the Protoface team and we can help you get set up.
+1. Rename `.env.example` to `.env` and paste your Protoface API key, your LiveKit secrets, and your Vapi API key and assistant id.
 
 ```js
 PROTOFACE_API_KEY="PROTOFACE-API-KEY"
@@ -26,7 +24,7 @@ LIVEKIT_API_SECRET="LIVEKIT-API-SECRET"
 
 NEXT_PUBLIC_VAPI_API_KEY="VAPI-API-KEY"
 NEXT_PUBLIC_VAPI_ASSISTANT_ID="VAPI-ASSISTANT-ID"
-NEXT_PUBLIC_PROTOFACE_AVATAR_ID="av_stock_001"
+NEXT_PUBLIC_PROTOFACE_AVATAR_ID="av_stock_001" // Optional (defaults to av_stock_001)
 ```
 
 2. Install packages
@@ -41,12 +39,16 @@ npm install
 npm run dev
 ```
 
-4. Create your Vapi agent, then set the agent ID in `.env`. `NEXT_PUBLIC_PROTOFACE_AVATAR_ID` is optional and defaults to `av_stock_001`.
+## How It Works
 
-```js
-NEXT_PUBLIC_VAPI_ASSISTANT_ID="VAPI-ASSISTANT-ID"
-NEXT_PUBLIC_PROTOFACE_AVATAR_ID="av_stock_001"
-```
+The app starts an Vapi conversation and a Protoface avatar session side by side:
+
+1. The server route creates a Protoface session and returns the browser connection details.
+2. `ProtofaceClient.start()` connects the browser to the avatar session.
+3. The browser starts the Vapi assistant call with the Vapi Web SDK.
+4. The app passes the realtime model speech to Protoface so the avatar speaks naturally.
+
+Protoface is the visible and audible avatar output for the experience.
 
 ## Characters
 
