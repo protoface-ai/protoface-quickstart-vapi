@@ -1,4 +1,4 @@
-# Protoface Quickstart for Open AI realtime
+# Protoface Quickstart for Vapi
 
 This quickstart is the easiest way to serve a Protoface Avatar connected to Vapi's AI Voice Agents. Simply follow the steps listed below.
 
